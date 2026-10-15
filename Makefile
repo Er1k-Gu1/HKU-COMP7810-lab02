@@ -6,7 +6,15 @@ ANVIL_KEY  := 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 ATTACK_KEY := 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
 RPC        := http://127.0.0.1:8545
 
-.PHONY: help setup doctor install-foundry test exercise challenge fmt anvil deploy-anvil snapshot restore subscribe redeem nav attest holdings queue clean
+# New added pre-defined addresses for the lab
+ADMIN      := 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+USDC       := 0x5FbDB2315678afecb367f032d93F642f64180aa3
+TBILL	   := 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+VAULT      := 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+QUEUE      := 0x0165878A594ca255338adfa4d48449f69242Eb8F
+CUSTODIAN  := 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+
+.PHONY: help setup doctor install-foundry test exercise challenge fmt anvil deploy-anvil snapshot restore subscribe redeem nav holdings shares attest queue clean faucet
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
@@ -67,8 +75,16 @@ attest: ## make attest NAV=100020000  the reporter posts a new NAV per share
 holdings: ## Ask the custodian what it actually holds
 	cast call $(CUSTODIAN) "realHoldings()(uint256)" --rpc-url $(RPC)
 
+shares: ## Show the ADMIN account's T-Bill share balance
+	cast call $(TBILL) "balanceOf(address)(uint256)" $(ADMIN) --rpc-url $(RPC)
+
 queue: ## Read what the queue still owes (pendingAssets, 6 decimals)
 	cast call $(QUEUE) "pendingAssets()(uint256)" --rpc-url $(RPC)
 
 clean: ## Remove build artifacts
 	forge clean
+
+# New added commands for the lab
+faucet: ## Mint test USDC to the Anvil admin account
+	cast send $(USDC) "faucet(address,uint256)" $(ADMIN) 1000000000000 \
+		--rpc-url $(RPC) --private-key $(ANVIL_KEY)
