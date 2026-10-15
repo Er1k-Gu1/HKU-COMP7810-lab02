@@ -220,3 +220,34 @@ What the zip must contain:
 
 The discussion prompts live in `STUDENT-QUESTIONS.md` — one per plank, no standard answers, and the
 real point of this lab.
+
+## Architecture Diagram
+
+## Deployment (Sepolia)
+1. MockUSDC:
+Address: 0x2557c895E4F2Ae69c22901689126C9C1eAe7ab97
+Link: https://sepolia.etherscan.io/address/0x2557c895E4F2Ae69c22901689126C9C1eAe7ab97#code
+
+2. ComplianceRegistry:
+Address: 0xe99b625631621d3959E88e00C6498F21564528A1
+Link: https://sepolia.etherscan.io/address/0xe99b625631621d3959E88e00C6498F21564528A1#code
+
+3. MockPriceFeed:
+Address: 0x536F9Fe56aF13D97c73019D92F6c3EB7C7dCAEb2
+Link: https://sepolia.etherscan.io/address/0x536F9Fe56aF13D97c73019D92F6c3EB7C7dCAEb2#code
+
+4. TBillToken:
+Address: 0x3BD820ed650Fb67a0ea62b6e5908115d86ccb428
+Link: https://sepolia.etherscan.io/address/0x3BD820ed650Fb67a0ea62b6e5908115d86ccb428#code
+
+5. MockTBillCustodian:
+Address: 0x2C9048E1195bb57283aD95fb21F3c4bA25725BD9
+Link: https://sepolia.etherscan.io/address/0x2C9048E1195bb57283aD95fb21F3c4bA25725BD9#code
+
+6. TBillVault:
+Address: 0xac8EfA1450B4FEbE9fBB70BBB53A17e7406E38e6
+Link: https://sepolia.etherscan.io/address/0xac8EfA1450B4FEbE9fBB70BBB53A17e7406E38e6#code
+
+7. RedemptionQueue:
+Address: 0x6138035542d396Edfe92afa0c8465c71e36799Bb
+Link: https://sepolia.etherscan.io/address/0x6138035542d396Edfe92afa0c8465c71e36799Bb#code
