@@ -223,6 +223,8 @@ real point of this lab.
 
 ## Architecture Diagram
 
+![RWA Bridge Architecture](./rwa_diagram.png)
+
 ## Deployment (Sepolia)
 1. MockUSDC:
 Address: 0x2557c895E4F2Ae69c22901689126C9C1eAe7ab97
